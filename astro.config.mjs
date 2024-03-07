@@ -8,5 +8,9 @@ import tailwindConfig from './tailwind.config.mjs';
 // https://astro.build/config
 export default defineConfig({
   site: "https://hxyuki.github.io/",
-  integrations: [preact(), tailwind(tailwindConfig)]
+  output: "static",
+  build: {
+    assets: "astro"
+  },
+  integrations: [tailwind()]
 });
