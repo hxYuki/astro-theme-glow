@@ -1,0 +1,40 @@
+---
+type Placement = "top" | "bottom" | "left" | "right";
+const { item, placement = "bottom", isChildren = false } = Astro.props;
+---
+
+<li
+    class="group/item relative p-2 font-medium text-base text-white"
+    class:list={[
+        {
+            "hover:bg-primary px-4 first:pt-3 last:pb-3 font-normal text-base tracking-widest":
+                isChildren,
+        },
+    ]}
+>
+    <a href={item.href} class="text-center p-2 uppercase">
+        {item.name}
+        {item.children && ">"}
+    </a>
+    {
+        item.children && (
+            <ul data-theme="dark"
+                class="group/menu absolute hidden group-hover/item:block w-max bg-basement bg-opacity-85 text-white shadow-lg rounded-es-xl rounded-se-xl overflow-hidden z-10"
+                class:list={[
+                    { "left-0 top-full": placement === "bottom" },
+                    { "left-full top-0": placement === "right" },
+                ]}
+            >
+                {item.children.map((child) => (
+                    <Astro.self item={child} placement="left" isChildren />
+                ))}
+            </ul>
+        )
+    }
+</li>
+
+<!-- <style>
+    ul {
+        width: max-content;
+    }
+</style> -->

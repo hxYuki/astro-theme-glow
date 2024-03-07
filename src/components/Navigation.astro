@@ -1,0 +1,41 @@
+---
+import Hamburger from "./Hamburger.astro";
+import ThemeIcon from "./ThemeIcon.astro";
+import NavLink from "./NavLink.astro";
+import "../styles/global.css";
+
+const navMap = [
+  { name: "首页", href: "/" },
+  {
+    name: "博客",
+    href: "/blog/",
+    children: [
+      { name: "归档", href: "/archive/" },
+      { name: "标签", href: "/tags/" },
+      { name: "分类", href: "/categories/" },
+    ],
+  },
+  { name: "关于", href: "/about/" },
+];
+---
+
+<style is:global>
+  html {
+    --blank-width: calc(100% - 8rem);
+  }
+</style>
+
+<nav class=" w-full h-14 flex items-center fixed">
+  <div
+    class="inner flex flex-row items-center w-full sm:w-[--blank-width] mx-auto"
+  >
+    <Hamburger />
+    <ul class="nav-links grow flex flex-row">
+      {navMap.map((na) => <NavLink item={na} placement="bottom"/>)}
+    </ul>
+    <ThemeIcon />
+  </div>
+</nav>
+<script>
+  document.addEventListener('scroll', (ev)=>{})
+</script>

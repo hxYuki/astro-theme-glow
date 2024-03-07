@@ -1,0 +1,38 @@
+---
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+import "@fontsource/fredericka-the-great";
+import "@fontsource/noto-serif-jp";
+import "@fontsource/noto-serif-sc";
+import "@fontsource-variable/Mulish";
+import "@fontsource-variable/fira-code";
+import { ViewTransitions } from "astro:transitions";
+const { pageTitle } = Astro.props;
+---
+
+<html lang="zh" data-theme>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{pageTitle}</title>
+        <ViewTransitions />
+    </head>
+    <body
+        class="bg-basement text-neutral font-default leading-loose mx-auto w-full"
+    >
+        <Header heading={pageTitle} />
+        <!-- <h1 transition:animate="slide" class="text-4xl text-white font-bold font-serif-sc">{pageTitle}</h1> -->
+        <aside class="bg-basement z-0 sm:px-[20rem] py-10 float-right">
+            <slot name="aside" />
+        </aside>
+        <main class="bg-basement z-0 sm:px-[20rem] py-10">
+            <slot />
+        </main>
+        
+        <Footer />
+    </body>
+</html>

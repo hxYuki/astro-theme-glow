@@ -1,0 +1,42 @@
+---
+import Hamburger from "./Hamburger.astro";
+import Navigation from "./Navigation.astro";
+import ThemeIcon from "./ThemeIcon.astro";
+
+import images from "../scripts/headerImages.json";
+const { heading, headerImage = images[1] } = Astro.props;
+---
+
+<style define:vars={{ bgImg: `url('${headerImage}')` }}>
+    header {
+        text-shadow: 0 0.2rem 0.3rem rgba(0,0,0,.5);;
+    }
+</style>
+
+<header class={`w-full h-[45vh] shadow-lg overflow-hidden bg-center`}>
+    <Navigation />
+    <div
+        class="fixed z-[-1] w-full h-[45vh] pt-[15vh] flex flex-col text-center items-center justify-center"
+    >
+        <h1
+            transition:animate="fade"
+            class="text-4xl text-white font-bold font-serif-sc h-max w-max"
+        >
+            {heading}
+        </h1>
+    </div>
+
+    <ul
+        class="fixed -z-10 w-full h-full before:block before:absolute before:-z-0 before:bg-black before:bg-opacity-50 before:w-full before:h-full"
+    >
+        <!-- <img src={headerImage} alt="Header Image" class="object-fill object-center h-[45vh] w-full -z-10" /> -->
+        <li
+            class={`absolute h-[45vh] w-full -z-10 bg-center`}
+            style={`background-image: url('${headerImage}');`}
+        >
+        </li>
+    </ul>
+</header>
+<script>
+    import "../scripts/menu.js";
+</script>
