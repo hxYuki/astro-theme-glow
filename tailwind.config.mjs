@@ -6,17 +6,19 @@ export default {
 	darkMode: ["selector", "[data-theme='dark']"],
 	theme: {
 		screens: {
-			'sm': '636px'	
+			'sm': '636px'
 		},
 		fontFamily: {
-			art: ['Fredericka the Great'],
-			default: ['"Mulish, serif"'],
-			'serif-jp': ['"Noto Serif JP"'],
-			'serif-sc': ['"Noto Serif SC"'],
-			code: ['"Fira Code"', 'monospace'],
+
 		},
 		extend: {
-
+			fontFamily: {
+				art: ['Fredericka the Great'],
+				default: ['"Mulish, serif"'],
+				'serif-jp': ['"Noto Serif JP"'],
+				'serif-sc': ['"Noto Serif SC"'],
+				code: ['"Fira Code"', 'monospace'],
+			}
 		},
 	},
 	plugins: [
